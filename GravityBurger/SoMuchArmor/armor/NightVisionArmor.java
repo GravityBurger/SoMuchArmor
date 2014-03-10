@@ -1,9 +1,14 @@
 package GravityBurger.SoMuchArmor.armor;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.world.World;
 import GravityBurger.SoMuchArmor.common.SoMuchArmor;
 
 public class NightVisionArmor extends ItemArmor{
@@ -20,7 +25,17 @@ public class NightVisionArmor extends ItemArmor{
 		}
 		else return null;
 		
-	};
+	
+		
+		
+		
+	}
+	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack){
+		if(itemStack.getItem() == SoMuchArmor.NightVisionHelmet){
+			player.addPotionEffect((new PotionEffect(Potion.nightVision.getId(), 4, 1)));
+		}
+	}
+	
 	
 	
 	

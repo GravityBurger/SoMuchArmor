@@ -2,6 +2,7 @@ package GravityBurger.SoMuchArmor.common;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
@@ -9,11 +10,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import GravityBurger.SoMuchArmor.armor.NightVisionArmor;
 import GravityBurger.SoMuchArmor.block.BlockTitaniumOre;
+import GravityBurger.SoMuchArmor.block.worldgeneration.TitaniumOreWG;
+import GravityBurger.SoMuchArmor.item.ItemGoggles;
 import GravityBurger.SoMuchArmor.item.ItemSteelIngot;
 import GravityBurger.SoMuchArmor.item.ItemTitaniumIngot;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.registry.GameRegistry;
+
 
 @Mod(modid = "SoMuchArmor", name = "So Much Armor", version = "Alpha 1.0")
 
@@ -38,16 +42,22 @@ public static Item NightVisionHelmet = new NightVisionArmor(NightVisionArmor, Ni
 public static TitaniumOreWG worldgen1 = new TitaniumOreWG();
 
 
+
 //Item Registration
 
 public static Item SteelIngot = new ItemSteelIngot(4000).setUnlocalizedName("SteelIngot").setTextureName("SoMuchArmor:SteelIngot");
 public static Item TitaniumIngot = new ItemTitaniumIngot(4001).setUnlocalizedName("TitaniumIngot").setTextureName("SoMuchArmor:TitaniumIngot");
-	
+public static Item Goggles = new ItemGoggles(4002).setUnlocalizedName("Goggles").setTextureName("SoMuchArmor:Goggles"); 
 //Ore Registration
 
-public static Block TitaniumOre = new BlockTitaniumOre(3000, Material.rock).setBlockTextureName("SoMuchArmor:TitaniumOre");
+public static Block TitaniumOre = new BlockTitaniumOre(3000, Material.rock).setBlockName("TitaniumOre").setBlockTextureName("SoMuchArmor:TitaniumOre");
 	
 	public SoMuchArmor(){
+		
+		//World Generator
+		
+		GameRegistry.registerWorldGenerator(worldgen1, 1);
+		
 		
 		
 		//Armor GameRegistry
@@ -60,6 +70,7 @@ public static Block TitaniumOre = new BlockTitaniumOre(3000, Material.rock).setB
 		
 		GameRegistry.registerItem(SteelIngot, "SteelIngot");
 		GameRegistry.registerItem(TitaniumIngot, "TitanuiumIngot");
+		GameRegistry.registerItem(Goggles, "Goggles");
 		
 		//Ore Registration
 		
@@ -68,7 +79,12 @@ public static Block TitaniumOre = new BlockTitaniumOre(3000, Material.rock).setB
 		
 		//Armor Recipes
 		
-		GameRegistry.addShapedRecipe(new ItemStack(NightVisionHelmet, 1), "XXX", "XOX", "  ", 'X', SteelIngot, 'O');
+		
+		
+		
+		
+		GameRegistry.addShapedRecipe(new ItemStack(NightVisionHelmet, 1), "XXX", "XOX", "  ", 'X', SteelIngot, 'O', Goggles);
+		GameRegistry.addShapedRecipe(new ItemStack(Goggles, 1), "  ", "X0X", "  ", 'X', Blocks.glass, '0', Blocks.redstone_block);
 		
 		
 		
@@ -77,6 +93,7 @@ public static Block TitaniumOre = new BlockTitaniumOre(3000, Material.rock).setB
 		//Item Recipes
 		
 		GameRegistry.addSmelting(Items.iron_ingot, new ItemStack(SteelIngot, 1), 10);
+		GameRegistry.addSmelting(TitaniumOre, new ItemStack(TitaniumIngot, 1), 10);
 		
 		
 		
