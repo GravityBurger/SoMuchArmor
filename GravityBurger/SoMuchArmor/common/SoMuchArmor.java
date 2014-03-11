@@ -2,6 +2,8 @@ package GravityBurger.SoMuchArmor.common;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -23,6 +25,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import GravityBurger.SoMuchArmor.armor.TitaniumArmor;
 import GravityBurger.SoMuchArmor.armor.EmeraldArmor;
 import GravityBurger.SoMuchArmor.armor.ArmorInvisability;
+import GravityBurger.SoMuchArmor.armor.LongFallBoots;
 
 @Mod(modid = "SoMuchArmor", name = "So Much Armor", version = "Alpha 1.0")
 
@@ -41,6 +44,7 @@ private static int EmeraldShirt;
 private static int EmeraldPants;
 private static int EmeraldShoes;
 private static int Invisability;
+private static int LongFallBoot;
 
 
 
@@ -49,10 +53,12 @@ public static ArmorMaterial NightVisionArmor = EnumHelper.addArmorMaterial("NIGH
 public static ArmorMaterial TitaniumArmor = EnumHelper.addArmorMaterial("TITANIUM", 42, new int[] {4, 8, 6, 2}, 5);
 public static ArmorMaterial EmeraldArmor = EnumHelper.addArmorMaterial("EMERALD", 66, new int[] {4, 8, 6, 2}, 20);
 public static ArmorMaterial ArmorInvisability = EnumHelper.addArmorMaterial("INVISABILITY", 0, new int[] {0, 0, 0, 0}, 0);
+public static ArmorMaterial LongFall = EnumHelper.addArmorMaterial("LONGFALLBOOTS", 0, new int[] {0, 0, 0, 0}, 0);
 //Armor Registration
 
 //Night Vision
 public static Item NightVisionHelmet = new NightVisionArmor(NightVisionArmor, NightVision, 0).setUnlocalizedName("NightVisionHelmet").setTextureName("SoMuchArmor:NightVisionHelmet");
+
 
 //Titanium
 public static Item TitaniumHelmet = new TitaniumArmor(TitaniumArmor, TitaniumHat, 0).setUnlocalizedName("TitaniumHelmet").setTextureName("SoMuchArmor:TitaniumHelmet");
@@ -71,6 +77,9 @@ public static Item EmeraldBoots = new EmeraldArmor(EmeraldArmor, EmeraldShoes, 3
 
 public static Item InvisabilityCloak = new ArmorInvisability(ArmorInvisability, Invisability, 1).setUnlocalizedName("InvisabilityCloak").setTextureName("SoMuchArmor:InvisabilityCloak");
 
+//Long Fall Boots
+
+public static Item LongFallBoots = new LongFallBoots(LongFall, LongFallBoot, 3).setUnlocalizedName("LongFallBoots").setTextureName("SoMuchArmor:LongFallBoots");
 
 //WorldGen
 
@@ -106,6 +115,7 @@ public static Block TitaniumOre = new BlockTitaniumOre(3000, Material.rock).setB
 		GameRegistry.registerItem(EmeraldLeggings, "EmeraldLeggings");
 		GameRegistry.registerItem(EmeraldBoots, "EmeraldBoots");
 		GameRegistry.registerItem(InvisabilityCloak, "InvisabilityCloak");
+		GameRegistry.registerItem(LongFallBoots, "LongFallBoots");
 		
 	
 		
@@ -136,7 +146,7 @@ public static Block TitaniumOre = new BlockTitaniumOre(3000, Material.rock).setB
 		GameRegistry.addShapedRecipe(new ItemStack(EmeraldChestplate, 1), "X X", "XXX", "XXX", 'X', Items.emerald);
 		GameRegistry.addShapedRecipe(new ItemStack(EmeraldLeggings, 1), "XXX", "X X", "X X", 'X', Items.emerald);
 		GameRegistry.addShapedRecipe(new ItemStack(EmeraldBoots, 1), "   ", "X X", "X X", 'X', Items.emerald);
-		
+		GameRegistry.addShapedRecipe(new ItemStack(LongFallBoots, 1), "   ", "X X", "O O", 'X', Blocks.iron_block, 'O', Blocks.wool);
 		
 		
 		
@@ -152,7 +162,11 @@ public static Block TitaniumOre = new BlockTitaniumOre(3000, Material.rock).setB
 		
 
 		//Dungeon Chests
-
+		
+		
+		
+		
+		
 		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(InvisabilityCloak), 1, 1, 1));
 		ChestGenHooks.addItem(ChestGenHooks.PYRAMID_DESERT_CHEST, new WeightedRandomChestContent(new ItemStack(InvisabilityCloak), 1, 1, 1));
 		ChestGenHooks.addItem(ChestGenHooks.PYRAMID_JUNGLE_CHEST, new WeightedRandomChestContent(new ItemStack(InvisabilityCloak), 1, 1, 1));
