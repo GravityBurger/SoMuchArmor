@@ -76,7 +76,7 @@ public static Item InvisabilityCloak = new ArmorInvisability(ArmorInvisability, 
 
 public static TitaniumOreWG worldgen1 = new TitaniumOreWG();
 
-
+//Updating
 
 //Item Registration
 

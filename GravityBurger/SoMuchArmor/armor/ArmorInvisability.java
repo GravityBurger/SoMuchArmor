@@ -18,6 +18,7 @@ public class ArmorInvisability extends ItemArmor{
 			int p_i45325_3_) {
 		super(p_i45325_1_, p_i45325_2_, p_i45325_3_);
 		this.setCreativeTab(CreativeTabs.tabCombat);
+		//Updating
 	}
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type){
 		if(stack.getItem() == SoMuchArmor.InvisabilityCloak){
