@@ -29,8 +29,8 @@ public class EmeraldArmor extends ItemArmor{
 		else return null;
 	}
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4){
-		list.add("This armor is magical. It gives you regeneration, but");
-		list.add("will make you weak.");
+		list.add("This armor is magical. It gives you");
+		list.add("regeneration, but will make you weak.");
 	}
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack){
 		if(itemStack.getItem() == SoMuchArmor.EmeraldHelmet || itemStack.getItem() == SoMuchArmor.EmeraldChestplate || itemStack.getItem() == SoMuchArmor.EmeraldLeggings || itemStack.getItem() == SoMuchArmor.EmeraldBoots){

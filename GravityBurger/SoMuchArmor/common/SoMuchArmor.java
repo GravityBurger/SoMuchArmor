@@ -7,6 +7,9 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.WeightedRandomChestContent;
+import net.minecraftforge.common.ChestGenHooks;
+import net.minecraftforge.common.DungeonHooks;
 import net.minecraftforge.common.util.EnumHelper;
 import GravityBurger.SoMuchArmor.armor.NightVisionArmor;
 import GravityBurger.SoMuchArmor.block.BlockTitaniumOre;
@@ -19,7 +22,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.registry.GameRegistry;
 import GravityBurger.SoMuchArmor.armor.TitaniumArmor;
 import GravityBurger.SoMuchArmor.armor.EmeraldArmor;
-
+import GravityBurger.SoMuchArmor.armor.ArmorInvisability;
 
 @Mod(modid = "SoMuchArmor", name = "So Much Armor", version = "Alpha 1.0")
 
@@ -37,6 +40,7 @@ private static int EmeraldHat;
 private static int EmeraldShirt;
 private static int EmeraldPants;
 private static int EmeraldShoes;
+private static int Invisability;
 
 
 
@@ -44,6 +48,7 @@ private static int EmeraldShoes;
 public static ArmorMaterial NightVisionArmor = EnumHelper.addArmorMaterial("NIGHTVISION", 15, new int[] {2, 0, 0, 0}, 10);
 public static ArmorMaterial TitaniumArmor = EnumHelper.addArmorMaterial("TITANIUM", 42, new int[] {4, 8, 6, 2}, 5);
 public static ArmorMaterial EmeraldArmor = EnumHelper.addArmorMaterial("EMERALD", 66, new int[] {4, 8, 6, 2}, 20);
+public static ArmorMaterial ArmorInvisability = EnumHelper.addArmorMaterial("INVISABILITY", 0, new int[] {0, 0, 0, 0}, 0);
 //Armor Registration
 
 //Night Vision
@@ -58,11 +63,13 @@ public static Item TitaniumBoots = new TitaniumArmor(TitaniumArmor, TitaniumShoe
 //Emerald
 
 public static Item EmeraldHelmet = new EmeraldArmor(EmeraldArmor, EmeraldHat, 0).setUnlocalizedName("EmeraldHelmet").setTextureName("SoMuchArmor:EmeraldHelmet");
-public static Item EmeraldChestplate = new EmeraldArmor(EmeraldArmor, EmeraldShirt, 1).setUnlocalizedName("EmeraldChestplate").setTextureName("SoMuchArmor:EmeraldHelmet");
+public static Item EmeraldChestplate = new EmeraldArmor(EmeraldArmor, EmeraldShirt, 1).setUnlocalizedName("EmeraldChestplate").setTextureName("SoMuchArmor:EmeraldChestplate");
 public static Item EmeraldLeggings = new EmeraldArmor(EmeraldArmor, EmeraldPants, 2).setUnlocalizedName("EmeraldLeggings").setTextureName("SoMuchArmor:EmeraldLeggings");
 public static Item EmeraldBoots = new EmeraldArmor(EmeraldArmor, EmeraldShoes, 3).setUnlocalizedName("EmeraldBoots").setTextureName("SoMuchArmor:EmeraldBoots");
 
+//Invisability
 
+public static Item InvisabilityCloak = new ArmorInvisability(ArmorInvisability, Invisability, 1).setUnlocalizedName("InvisabilityCloak").setTextureName("SoMuchArmor:InvisabilityCloak");
 
 
 //WorldGen
@@ -98,6 +105,8 @@ public static Block TitaniumOre = new BlockTitaniumOre(3000, Material.rock).setB
 		GameRegistry.registerItem(EmeraldChestplate, "EmeraldChestplate");
 		GameRegistry.registerItem(EmeraldLeggings, "EmeraldLeggings");
 		GameRegistry.registerItem(EmeraldBoots, "EmeraldBoots");
+		GameRegistry.registerItem(InvisabilityCloak, "InvisabilityCloak");
+		
 	
 		
 		
@@ -109,6 +118,7 @@ public static Block TitaniumOre = new BlockTitaniumOre(3000, Material.rock).setB
 		GameRegistry.registerItem(SteelIngot, "SteelIngot");
 		GameRegistry.registerItem(TitaniumIngot, "TitanuiumIngot");
 		GameRegistry.registerItem(Goggles, "Goggles");
+		
 		
 		//Ore Registration
 		
@@ -130,6 +140,7 @@ public static Block TitaniumOre = new BlockTitaniumOre(3000, Material.rock).setB
 		
 		
 		
+		
 		//Item Recipes
 		
 		GameRegistry.addSmelting(Items.iron_ingot, new ItemStack(SteelIngot, 1), 10);
@@ -139,11 +150,12 @@ public static Block TitaniumOre = new BlockTitaniumOre(3000, Material.rock).setB
 		
 		
 		
-		
-		
-		
-		
-		
+
+		//Dungeon Chests
+
+		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(InvisabilityCloak), 1, 1, 1));
+		ChestGenHooks.addItem(ChestGenHooks.PYRAMID_DESERT_CHEST, new WeightedRandomChestContent(new ItemStack(InvisabilityCloak), 1, 1, 1));
+		ChestGenHooks.addItem(ChestGenHooks.PYRAMID_JUNGLE_CHEST, new WeightedRandomChestContent(new ItemStack(InvisabilityCloak), 1, 1, 1));
 		
 	}
 
