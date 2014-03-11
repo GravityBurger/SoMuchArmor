@@ -18,6 +18,7 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.registry.GameRegistry;
 import GravityBurger.SoMuchArmor.armor.TitaniumArmor;
+import GravityBurger.SoMuchArmor.armor.EmeraldArmor;
 
 
 @Mod(modid = "SoMuchArmor", name = "So Much Armor", version = "Alpha 1.0")
@@ -32,13 +33,17 @@ private static int TitaniumHat;
 private static int TitaniumShirt;
 private static int TitaniumPants;
 private static int TitaniumShoes;
+private static int EmeraldHat;
+private static int EmeraldShirt;
+private static int EmeraldPants;
+private static int EmeraldShoes;
 
 
 
 //Armor Material
 public static ArmorMaterial NightVisionArmor = EnumHelper.addArmorMaterial("NIGHTVISION", 15, new int[] {2, 0, 0, 0}, 10);
 public static ArmorMaterial TitaniumArmor = EnumHelper.addArmorMaterial("TITANIUM", 42, new int[] {4, 8, 6, 2}, 5);
-
+public static ArmorMaterial EmeraldArmor = EnumHelper.addArmorMaterial("EMERALD", 66, new int[] {4, 8, 6, 2}, 20);
 //Armor Registration
 
 //Night Vision
@@ -49,6 +54,17 @@ public static Item TitaniumHelmet = new TitaniumArmor(TitaniumArmor, TitaniumHat
 public static Item TitaniumChestplate = new TitaniumArmor(TitaniumArmor, TitaniumShirt, 1).setUnlocalizedName("TitaniumChestplate").setTextureName("SoMuchArmor:TitaniumChestplate");
 public static Item TitaniumLeggings = new TitaniumArmor(TitaniumArmor, TitaniumPants, 2).setUnlocalizedName("TitaniumLeggings").setTextureName("SoMuchArmor:TitaniumLeggings");
 public static Item TitaniumBoots = new TitaniumArmor(TitaniumArmor, TitaniumShoes, 3).setUnlocalizedName("TitaniumBoots").setTextureName("SoMuchArmor:TitaniumBoots");
+
+//Emerald
+
+public static Item EmeraldHelmet = new EmeraldArmor(EmeraldArmor, EmeraldHat, 0).setUnlocalizedName("EmeraldHelmet").setTextureName("SoMuchArmor:EmeraldHelmet");
+public static Item EmeraldChestplate = new EmeraldArmor(EmeraldArmor, EmeraldShirt, 1).setUnlocalizedName("EmeraldChestplate").setTextureName("SoMuchArmor:EmeraldHelmet");
+public static Item EmeraldLeggings = new EmeraldArmor(EmeraldArmor, EmeraldPants, 2).setUnlocalizedName("EmeraldLeggings").setTextureName("SoMuchArmor:EmeraldLeggings");
+public static Item EmeraldBoots = new EmeraldArmor(EmeraldArmor, EmeraldShoes, 3).setUnlocalizedName("EmeraldBoots").setTextureName("SoMuchArmor:EmeraldBoots");
+
+
+
+
 //WorldGen
 
 public static TitaniumOreWG worldgen1 = new TitaniumOreWG();
@@ -78,6 +94,11 @@ public static Block TitaniumOre = new BlockTitaniumOre(3000, Material.rock).setB
 		GameRegistry.registerItem(TitaniumChestplate, "TitaniumChestplate");
 		GameRegistry.registerItem(TitaniumLeggings, "TitaniumLeggings");
 		GameRegistry.registerItem(TitaniumBoots, "TitaniumBoots");
+		GameRegistry.registerItem(EmeraldHelmet, "EmeraldHelmet");
+		GameRegistry.registerItem(EmeraldChestplate, "EmeraldChestplate");
+		GameRegistry.registerItem(EmeraldLeggings, "EmeraldLeggings");
+		GameRegistry.registerItem(EmeraldBoots, "EmeraldBoots");
+	
 		
 		
 		
@@ -101,6 +122,10 @@ public static Block TitaniumOre = new BlockTitaniumOre(3000, Material.rock).setB
 		GameRegistry.addShapedRecipe(new ItemStack(TitaniumChestplate, 1), "X X", "XXX", "XXX", 'X', TitaniumIngot);
 		GameRegistry.addShapedRecipe(new ItemStack(TitaniumLeggings, 1), "XXX", "X X", "X X", 'X', TitaniumIngot);
 		GameRegistry.addShapedRecipe(new ItemStack(TitaniumBoots, 1), "   ", "X X", "X X", 'X', TitaniumIngot);
+		GameRegistry.addShapedRecipe(new ItemStack(EmeraldHelmet, 1), "XXX", "X X", "   ", 'X', Items.emerald);
+		GameRegistry.addShapedRecipe(new ItemStack(EmeraldChestplate, 1), "X X", "XXX", "XXX", 'X', Items.emerald);
+		GameRegistry.addShapedRecipe(new ItemStack(EmeraldLeggings, 1), "XXX", "X X", "X X", 'X', Items.emerald);
+		GameRegistry.addShapedRecipe(new ItemStack(EmeraldBoots, 1), "   ", "X X", "X X", 'X', Items.emerald);
 		
 		
 		
