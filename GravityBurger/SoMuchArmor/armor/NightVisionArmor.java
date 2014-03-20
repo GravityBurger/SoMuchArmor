@@ -16,7 +16,7 @@ public class NightVisionArmor extends ItemArmor{
 	public NightVisionArmor(ArmorMaterial p_i45325_1_, int p_i45325_2_,
 			int p_i45325_3_) {
 		super(p_i45325_1_, p_i45325_2_, p_i45325_3_);
-		this.setCreativeTab(CreativeTabs.tabCombat);
+		this.setCreativeTab(SoMuchArmor.SMATab);
 	}
 	
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type){
@@ -32,7 +32,7 @@ public class NightVisionArmor extends ItemArmor{
 	}
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack){
 		if(itemStack.getItem() == SoMuchArmor.NightVisionHelmet){
-			player.addPotionEffect((new PotionEffect(Potion.nightVision.getId(), 4, 1)));
+			player.addPotionEffect((new PotionEffect(Potion.nightVision.getId(), 19, 1)));
 		}
 	}
 	
